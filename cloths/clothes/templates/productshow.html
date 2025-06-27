@@ -380,18 +380,22 @@
 
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    let searchinput = document.getElementById('search');
-    let searchbutton = document.getElementById('searchbutton');
 
-    searchbutton.addEventListener("click", (event) => {
-        event.preventDefault();
-        let query = encodeURIComponent(searchinput.value.trim());
-        if (query) {
-            window.location.href = `${window.location.origin}/search/${query}/`;
-        }
-    });
-});
+  const form = document.getElementById('buyForm');
+  const toast = document.getElementById('toast');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    // Show toast message
+    toast.style.display = 'block';
+
+    setTimeout(() => {
+      toast.style.display = 'none';
+      form.submit();
+    }, 1500);
+  });
+
 
   function selectSize(button, size) {
     document.querySelectorAll('.size-button').forEach(btn => btn.classList.remove('selected'));

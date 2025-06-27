@@ -245,6 +245,7 @@ a {
       background-color: #222;
       overflow-x: auto;
       white-space: nowrap;
+ 
     }
 
     .categories-bar a {
@@ -311,3 +312,5 @@ a {
   .offcanvas-dark .nav-link:hover {
     color: #ffc107;
   }
+
+
