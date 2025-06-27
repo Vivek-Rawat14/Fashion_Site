@@ -361,22 +361,13 @@ def terms(req):
     return render(req,'term.html')
 
 
-def addremoveitemss(request, Id):
-    if request.method == 'POST':
-        username = request.session.get('user')
-        if not username:
-            return redirect('/login')
 
-        user = models.users.objects.get(username=username)
+def clearcart(request):
+    username = request.session.get('user')
+    if not username:
+        return redirect('/login')
 
-        itemss = json.loads(user.cart) if user.cart else []
-
-        try:
-            itemss.remove(Id)
-        except ValueError:
-            pass
-
-        user.cart = json.dumps(itemss)
-        user.save()
-
+    user = models.users.objects.get(username=username)
+    user.cart = json.dumps([])  # empty list
+    user.save()
     return redirect('/carts')

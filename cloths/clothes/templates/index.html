@@ -203,6 +203,7 @@
   .btn {
     font-size: 0.75rem;
     padding: 4px 6px;
+    
   }
 }
 
@@ -216,7 +217,9 @@
     .carousel-inner img {
       height: 50vh !important;
     }
-   
+    .info p{
+      font-size: 10px;
+    }
   } 
    .offcanvas-dark {
    background-color: #111;
@@ -296,8 +299,8 @@
 
   <div class="offcanvas-body">
     <div class="mb-4">
-      <input class="form-control" id="search" placeholder="Search for products..." />
-      <button class="btn btn-dark w-100 mt-2" id="searchbutton">Search</button>
+      <input class="form-control" id="searcht" placeholder="Search for products..." />
+      <button class="btn btn-dark w-100 mt-2" id="searchbuttont">Search</button>
     </div>
 
     <ul class="list-group">
@@ -412,8 +415,7 @@
 </div>
       
       
-         <div class="video-gallery">
-     
+     <div class="video-gallery"> 
       <div class="video-item">
         <a href="shoescoll">
           <video src="{% static "src/v1.mp4" %}" autoplay loop muted></video>
@@ -580,9 +582,23 @@
     },
     freeMode: true, // Allows momentum-style scrolling
   });
+
   document.addEventListener('DOMContentLoaded', () => {
     let searchinput = document.getElementById('search');
     let searchbutton = document.getElementById('searchbutton');
+
+    searchbutton.addEventListener("click", (event) => {
+        event.preventDefault();
+        let query = encodeURIComponent(searchinput.value.trim());
+        if (query) {
+            window.location.href = `${window.location.origin}/search/${query}/`;
+        }
+    });
+});
+
+  document.addEventListener('DOMContentLoaded', () => {
+    let searchinput = document.getElementById('searcht');
+    let searchbutton = document.getElementById('searchbuttont');
 
     searchbutton.addEventListener("click", (event) => {
         event.preventDefault();

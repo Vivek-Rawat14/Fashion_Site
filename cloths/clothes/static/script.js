@@ -1,6 +1,6 @@
-document.addEventListener('DOMContentLoaded', () => {
-    let searchinput = document.getElementById('search');
-    let searchbutton = document.getElementById('searchbutton');
+  document.addEventListener('DOMContentLoaded', () => {
+    let searchinput = document.getElementById('searcht');
+    let searchbutton = document.getElementById('searchbuttont');
 
     searchbutton.addEventListener("click", (event) => {
         event.preventDefault();

@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href={% static 'styles.css' %}>
     <link rel="shortcut icon" href="{% static 'src/logo-removebg-preview (2).png' %}" type="image/x-icon">
-    <script src={% static 'script.js' %}></script>
+    <script src="{% static 'script.js' %}"></script>
   <style>
 
     .ap {
@@ -76,34 +76,61 @@
   </style>
 </head>
 <body>
-   <div class="navbar-container">
-  <nav class="navbar navbar-expand-lg navbar-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">FASHION</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+    <div class="navbar-container">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">FASHION</a>
 
-      <div class="collapse navbar-collapse justify-content-between" id="navbarResponsive">
-        <div class="search-wrapper d-flex align-items-center mt-2 mt-lg-0">
-          <input class="form-control search-input" id="search" placeholder="Search for products..." />
-          <button class="btn search-btn" id="searchbutton">Search</button>
-        </div>
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-        <ul class="navbar-nav ms-auto mt-3 mt-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" href="/users"><i class="fa-solid fa-user"></i> Profile</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/like"><i class="fa-solid fa-heart"></i> Wishlist</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/carts"><i class="fa-solid fa-bag-shopping"></i> Cart</a>
-          </li>
-        </ul>
+    <div class="collapse navbar-collapse d-none d-lg-flex justify-content-between" id="navbarResponsive">
+      <div class="search-wrapper d-flex align-items-center">
+        <input class="form-control me-2" id="search" placeholder="Search for products..." />
+        <button class="btn btn-outline-light" id="searchbutton">Search</button>
       </div>
+
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/users"><i class="fa-solid fa-user"></i> Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/like"><i class="fa-solid fa-heart"></i> Wishlist</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/carts"><i class="fa-solid fa-bag-shopping"></i> Cart</a>
+        </li>
+      </ul>
     </div>
-  </nav>
+  </div>
+</nav>
+
+<div class="offcanvas offcanvas-end offcanvas-dark" tabindex="-1" id="mobileMenu">
+  <div class="offcanvas-header border-bottom border-secondary">
+<a class="navbar-brand" href="#">FASHION</a>
+    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+  </div>
+
+  <div class="offcanvas-body">
+    <div class="mb-4">
+      <input class="form-control" id="searcht" placeholder="Search for products..." />
+      <button class="btn btn-dark w-100 mt-2" id="searchbuttont">Search</button>
+    </div>
+
+    <ul class="list-group">
+      <li class="list-group-item">
+        <a class="nav-link" href="/users"><i class="fa-solid fa-user me-2"></i> Profile</a>
+      </li>
+      <li class="list-group-item">
+        <a class="nav-link" href="/like"><i class="fa-solid fa-heart me-2"></i> Wishlist</a>
+      </li>
+      <li class="list-group-item">
+        <a class="nav-link" href="/carts"><i class="fa-solid fa-bag-shopping me-2"></i> Cart</a>
+      </li>
+    </ul>
+  </div>
+</div>
 
   <div class="categories-bar px-2 " style="text-align:center">
     <a href="/">Home</a>
@@ -115,7 +142,6 @@
    
   </div>
 </div>
-    
 
      <div class="ap">
           <div class="containerst">

@@ -274,3 +274,40 @@ a {
         margin-bottom: 1rem;
       }
     }
+
+       .offcanvas-dark {
+   background-color: #111;
+      color: #fff;
+  }
+
+  .offcanvas-dark .offcanvas-title {
+    color: #fff;
+  }
+
+  .offcanvas-dark .form-control {
+    background-color: #1c1c1c;
+    color: #fff;
+    border: 1px solid #444;
+  }
+
+  .offcanvas-dark .form-control::placeholder {
+    color: #aaa;
+  }
+
+  .offcanvas-dark .btn-dark {
+    background-color: #333;
+    border: none;
+  }
+
+  .offcanvas-dark .list-group-item {
+    background-color: #121212;
+    border: none;
+  }
+
+  .offcanvas-dark .nav-link {
+    color: #fff;
+  }
+
+  .offcanvas-dark .nav-link:hover {
+    color: #ffc107;
+  }

@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href={% static 'styles.css' %}>
     <link rel="shortcut icon" href="{% static 'src/logo-removebg-preview (2).png' %}" type="image/x-icon">
-    <script src={% static 'script.js' %}></script>  <style>
+    <script src="{% static 'script.js' %}"></script>  <style>
     body {
       background-color: #f8f9fa;
       font-family: 'Segoe UI', sans-serif;
@@ -86,34 +86,61 @@
 </head>
 <body>
 
-   <div class="navbar-container">
-  <nav class="navbar navbar-expand-lg navbar-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">FASHION</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+    <div class="navbar-container">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">FASHION</a>
 
-      <div class="collapse navbar-collapse justify-content-between" id="navbarResponsive">
-        <div class="search-wrapper d-flex align-items-center mt-2 mt-lg-0">
-          <input class="form-control search-input" id="search" placeholder="Search for products..." />
-          <button class="btn search-btn" id="searchbutton">Search</button>
-        </div>
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-        <ul class="navbar-nav ms-auto mt-3 mt-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" href="/users"><i class="fa-solid fa-user"></i> Profile</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/like"><i class="fa-solid fa-heart"></i> Wishlist</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/carts"><i class="fa-solid fa-bag-shopping"></i> Cart</a>
-          </li>
-        </ul>
+    <div class="collapse navbar-collapse d-none d-lg-flex justify-content-between" id="navbarResponsive">
+      <div class="search-wrapper d-flex align-items-center">
+        <input class="form-control me-2" id="search" placeholder="Search for products..." />
+        <button class="btn btn-outline-light" id="searchbutton">Search</button>
       </div>
+
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/users"><i class="fa-solid fa-user"></i> Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/like"><i class="fa-solid fa-heart"></i> Wishlist</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/carts"><i class="fa-solid fa-bag-shopping"></i> Cart</a>
+        </li>
+      </ul>
     </div>
-  </nav>
+  </div>
+</nav>
+
+<div class="offcanvas offcanvas-end offcanvas-dark" tabindex="-1" id="mobileMenu">
+  <div class="offcanvas-header border-bottom border-secondary">
+<a class="navbar-brand" href="#">FASHION</a>
+    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+  </div>
+
+  <div class="offcanvas-body">
+    <div class="mb-4">
+      <input class="form-control" id="searcht" placeholder="Search for products..." />
+      <button class="btn btn-dark w-100 mt-2" id="searchbuttont">Search</button>
+    </div>
+
+    <ul class="list-group">
+      <li class="list-group-item">
+        <a class="nav-link" href="/users"><i class="fa-solid fa-user me-2"></i> Profile</a>
+      </li>
+      <li class="list-group-item">
+        <a class="nav-link" href="/like"><i class="fa-solid fa-heart me-2"></i> Wishlist</a>
+      </li>
+      <li class="list-group-item">
+        <a class="nav-link" href="/carts"><i class="fa-solid fa-bag-shopping me-2"></i> Cart</a>
+      </li>
+    </ul>
+  </div>
+</div>
 
   <div class="categories-bar px-2 " style="text-align:center">
     <a href="/">Home</a>
@@ -127,17 +154,23 @@
 </div>
     
 
-
 <div class="orders-container">
   <div class="orders-title">🛍 My Orders</div>
 
   {% if data %}
+    <div class="text-end mb-3">
+      <form method="post" action="{% url 'clearcart' %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">🗑 Clear All</button>
+      </form>
+    </div>
+
     {% for item in data %}
       <div class="order-card">
         <img src="{% static 'clothimg/' %}{{ item.product.clothimg }}" class="order-img" alt="{{ item.product.clothname }}">
         <div class="order-info">
           <h5>{{ item.product.clothname }}</h5>
-          {% if item.size != 10%}
+          {% if item.size != 10 %}
             <p><strong>Size:</strong> {{ item.size }}</p>
           {% endif %}
           <p><strong>Quantity:</strong> {{ item.qty }}</p>
@@ -145,20 +178,14 @@
         <div class="order-price">
           ₹{{ item.product.clothprice|floatformat:2 }}
         </div>
-      </div>  
-<form method="post" action="{% url 'addremoveitemss' item.product.id %}" style="margin:0;">
-  {% csrf_token %}
-  <button type="submit" class="btn-remove">Remove</button>
-</form>
-
+      </div>
     {% endfor %}
   {% else %}
     <p class="text-center text-muted">You haven't placed any orders yet.</p>
   {% endif %}
 </div>
 
-
-<footer style="background-color: #0e0e0e; color: #ccc; padding: 60px 20px 30px;">
+<div style="background-color: #0e0e0e; color: #ccc; padding: 70px 20px 60px;">
   <div class="container">
     <div class="row gy-4 justify-content-between text-center text-lg-start">
 
@@ -201,7 +228,7 @@
 
     <div class="text-center" style="font-size: 0.85rem;">&copy; 2025 FASHION. All rights reserved.</div>
   </div>
-</footer>
+</div>
 
 
 
