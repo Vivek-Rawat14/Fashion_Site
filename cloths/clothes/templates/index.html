@@ -1,0 +1,595 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FASHION</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+     crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href={% static 'styles.css' %}>
+    <link rel="shortcut icon" href="{% static 'src/logo-removebg-preview (2).png' %}" type="image/x-icon">
+    <script src="{% static 'script.js' %}"></script>
+<style>
+      .navbar-container {
+      background-color: #111;
+      color: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+   .navbar {
+      padding: 0.7rem 1rem;
+    }
+
+    .navbar-brand {
+      font-size: 1.6rem;
+      font-weight: bold;
+      color: #fff;
+      letter-spacing: 1px;
+    }
+
+    .navbar-toggler {
+      border: none;
+    }
+
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 30 30'%3E%3Cpath stroke='white' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    }
+
+    .nav-link {
+      color: #ddd !important;
+      font-weight: 500;
+      margin-left: 1rem;
+    }
+
+    .nav-link:hover {
+      color: #ff4f81 !important;
+    }
+
+    .search-wrapper {
+      width: 100%;
+      max-width: 500px;
+      margin: auto;
+    }
+
+    .search-input {
+      width: 100%;
+      border-radius: 50px;
+      border: none;
+      padding: 0.5rem 1rem;
+      outline: none;
+      background: #fff;
+      color: #333;
+    }
+
+    .search-btn {
+      margin-left: 10px;
+      border-radius: 50px;
+      background: #ff4f81;
+      color: white;
+      border: none;
+      padding: 0.5rem 1.2rem;
+    }
+
+    .search-btn:hover {
+      background: #e63c6d;
+    }
+
+    .categories-bar {
+      background-color: #222;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+
+    .categories-bar a {
+      display: inline-block;
+      color: #ddd;
+      padding: 0.75rem 1rem;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+
+    .categories-bar a:hover {
+      background: #ff4f81;
+      color: #fff;
+    }
+
+    @media (max-width: 991px) {
+      .navbar-collapse {
+        background: #111;
+        padding: 1rem;
+      }
+
+     
+
+      .search-wrapper {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+      }
+    }
+
+.scroll-row {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 5px;
+
+  
+  scrollbar-width: none; 
+}
+
+.scroll-row::-webkit-scrollbar {
+  height: 0px;
+  transition: height 0.3s ease;
+}
+
+
+.scroll-row:hover {
+  scrollbar-width: thin; 
+}
+
+.scroll-row:hover::-webkit-scrollbar {
+  height: 8px;
+}
+
+.scroll-row::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scroll-row::-webkit-scrollbar-thumb {
+  background-color: #999;
+  border-radius: 4px;
+}
+
+.scroll-row:hover::-webkit-scrollbar-thumb {
+  background-color: #666;
+}
+
+.product-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.product-card {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.product-card:hover {
+  transform: scale(1.02);
+}
+
+.image-wrapper {
+  height: 200px;
+  overflow: hidden;
+}
+
+.product-image {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+
+@media (max-width: 576px) {
+  .product-card {
+    max-width: 160px;
+  }
+
+  .image-wrapper {
+    height: 120px;
+  }
+
+  .product-title {
+    font-size: 0.9rem;
+  }
+
+  .product-price {
+    font-size: 0.85rem;
+  }
+
+  .btn {
+    font-size: 0.75rem;
+    padding: 4px 6px;
+  }
+}
+
+
+.image-wrapper:hover .product-image {
+  transform: scale(1.05);
+}
+
+
+  @media (max-width: 768px) {
+    .carousel-inner img {
+      height: 50vh !important;
+    }
+   
+  } 
+   .offcanvas-dark {
+   background-color: #111;
+      color: #fff;
+  }
+
+  .offcanvas-dark .offcanvas-title {
+    color: #fff;
+  }
+
+  .offcanvas-dark .form-control {
+    background-color: #1c1c1c;
+    color: #fff;
+    border: 1px solid #444;
+  }
+
+  .offcanvas-dark .form-control::placeholder {
+    color: #aaa;
+  }
+
+  .offcanvas-dark .btn-dark {
+    background-color: #333;
+    border: none;
+  }
+
+  .offcanvas-dark .list-group-item {
+    background-color: #121212;
+    border: none;
+  }
+
+  .offcanvas-dark .nav-link {
+    color: #fff;
+  }
+
+  .offcanvas-dark .nav-link:hover {
+    color: #ffc107;
+  }
+
+</style>
+</head>
+<body>
+   <div class="navbar-container">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">FASHION</a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse d-none d-lg-flex justify-content-between" id="navbarResponsive">
+      <div class="search-wrapper d-flex align-items-center">
+        <input class="form-control me-2" id="search" placeholder="Search for products..." />
+        <button class="btn btn-outline-light" id="searchbutton">Search</button>
+      </div>
+
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/users"><i class="fa-solid fa-user"></i> Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/like"><i class="fa-solid fa-heart"></i> Wishlist</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/carts"><i class="fa-solid fa-bag-shopping"></i> Cart</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="offcanvas offcanvas-end offcanvas-dark" tabindex="-1" id="mobileMenu">
+  <div class="offcanvas-header border-bottom border-secondary">
+<a class="navbar-brand" href="#">FASHION</a>
+    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+  </div>
+
+  <div class="offcanvas-body">
+    <div class="mb-4">
+      <input class="form-control" id="search" placeholder="Search for products..." />
+      <button class="btn btn-dark w-100 mt-2" id="searchbutton">Search</button>
+    </div>
+
+    <ul class="list-group">
+      <li class="list-group-item">
+        <a class="nav-link" href="/users"><i class="fa-solid fa-user me-2"></i> Profile</a>
+      </li>
+      <li class="list-group-item">
+        <a class="nav-link" href="/like"><i class="fa-solid fa-heart me-2"></i> Wishlist</a>
+      </li>
+      <li class="list-group-item">
+        <a class="nav-link" href="/carts"><i class="fa-solid fa-bag-shopping me-2"></i> Cart</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+  <div class="categories-bar px-2 " style="text-align:center">
+    <a href="/">Home</a>
+    <a href="/mencollection">Men</a>
+    <a href="/womencollection">Women</a>
+    <a href="/watchcoll">Watches</a>
+    <a href="/shoescoll">Shoes</a>
+    <a href="/accessoires">Accessories</a>
+   
+  </div>
+</div>
+    
+
+
+
+<div id="demo" class="carousel slide" data-bs-ride="carousel"  >
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active" aria-current="true"></button>
+    <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+    <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+    <button type="button" data-bs-target="#demo" data-bs-slide-to="3"></button>
+  </div>
+
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{% static 'src/b1.jpg' %}" class="d-block w-100 img-fluid" style="height: 80vh; object-fit: cover;">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'src/b2.jpg' %}" class="d-block w-100 img-fluid" style="height: 80vh; object-fit: cover;">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'src/b3.jpeg' %}" class="d-block w-100 img-fluid" style="height: 80vh; object-fit: cover;">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'src/b4.jpg' %}" class="d-block w-100 img-fluid" style="height: 80vh; object-fit: cover;">
+    </div>
+  </div>
+
+  <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+
+<div class="containers py-3">
+  <div class="store-header mb-4 fs-3 fw-bold text-center">Men-Shirt</div>
+  <div class="scroll-row d-flex gap-3 overflow-auto pb-2">
+    {% for i in data %}
+    
+    <div class="card product-card flex-shrink-0" style="width: 295px;">
+      <div class="image-wrapper">
+        <img src="{% static 'clothimg/' %}{{ i.clothimg }}" alt="Product" class="product-image card-img-top">
+      </div>
+      <div class="card-body d-flex flex-column">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <span class="product-price fw-bold">Rs {{ i.clothprice }}</span>
+          
+        </div>
+        <h5 class="product-title mb-2">{{ i.clothname }}</h5>
+        <a href="productshow/{{i.id}}" class="btn btn-outline-dark btn-sm mt-auto w-100">View Product</a>
+      </div>
+    </div>
+   
+    {% endfor %}
+  </div>
+</div>
+      
+      
+ 
+    
+<div class="containers py-3">
+  <div class="store-header mb-4 fs-3 fw-bold text-center">Women-Handbags</div>
+  <div class="scroll-row d-flex gap-3 overflow-auto pb-2">
+    {% for i in bags %}
+    
+    <div class="card product-card flex-shrink-0" style="width: 295px;">
+      <div class="image-wrapper">
+        <img src="{% static 'clothimg/' %}{{ i.clothimg }}" alt="Product" class="product-image card-img-top">
+      </div>
+      <div class="card-body d-flex flex-column">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <span class="product-price fw-bold">Rs {{ i.clothprice }}</span>
+          
+        </div>
+        <h5 class="product-title mb-2">{{ i.clothname }}</h5>
+        <a href="productshow/{{i.id}}" class="btn btn-outline-dark btn-sm mt-auto w-100">View Product</a>
+      </div>
+    </div>
+   
+    {% endfor %}
+  </div>
+</div>
+      
+      
+         <div class="video-gallery">
+     
+      <div class="video-item">
+        <a href="shoescoll">
+          <video src="{% static "src/v1.mp4" %}" autoplay loop muted></video>
+          <div class="overlay">
+              <div class="info">
+                  <p>Find Your Feet's Perfect Match.</p>
+              </div>
+          </div>
+        </a>
+      </div>
+     
+      <div class="video-item">
+       <a href="watchcoll">
+        <video src="{% static "src/v2.mp4" %}" autoplay loop muted></video>
+        <div class="overlay">
+            <div class="info">
+                <p>World-class watch made for you</p>
+            </div>
+        </div>
+       </a>
+      </div>
+     
+      <div class="video-item">
+       <a href="tshirt">
+        <video src="{% static "src/v3.mp4" %}" autoplay loop muted></video>
+        <div class="overlay">
+            <div class="info">
+                <p>Slaying in style with this trendy t-shirt!</p>
+            </div>
+        </div>
+       </a>
+      </div>
+     
+      <div class="video-item">
+        <a href="sareew">
+          <video src="{% static "src/v5.mp4" %}" autoplay loop muted></video>
+          <div class="overlay">
+              <div class="info">
+                  <p>When in doubt, wear a kurti and slay the day!</p>
+              </div>
+          </div>
+      </div>
+    </a>
+    </div>
+   
+
+
+ 
+
+
+<div class="containers py-3">
+  <div class="store-header mb-4 fs-3 fw-bold text-center">Rings</div>
+  <div class="scroll-row d-flex gap-3 overflow-auto pb-2">
+    {% for i in watch %}
+   
+    <div class="card product-card flex-shrink-0" style="width: 295px;">
+      <div class="image-wrapper">
+        <img src="{% static 'clothimg/' %}{{ i.clothimg }}" alt="Product" class="product-image card-img-top">
+      </div>
+      <div class="card-body d-flex flex-column">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <span class="product-price fw-bold">Rs {{ i.clothprice }}</span>
+          
+        </div>
+        <h5 class="product-title mb-2">{{ i.clothname }}</h5>
+        <a href="productshow/{{i.id}}" class="btn btn-outline-dark btn-sm mt-auto w-100">View Product</a>
+      </div>
+    </div>
+ 
+    {% endfor %}
+  </div>
+</div>
+      
+
+<div class="containers py-3">
+  <div class="store-header mb-4 fs-3 fw-bold text-center">  Women-Printed Tshirt</div>
+  <div class="scroll-row d-flex gap-3 overflow-auto pb-2">
+    {% for i in wtsh %}
+ 
+    <div class="card product-card flex-shrink-0" style="width: 295px;">
+      <div class="image-wrapper">
+        <img src="{% static 'clothimg/' %}{{ i.clothimg }}" alt="Product" class="product-image card-img-top">
+      </div>
+      <div class="card-body d-flex flex-column">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <span class="product-price fw-bold">Rs {{ i.clothprice }}</span>
+          
+        </div>
+        <h5 class="product-title mb-2">{{ i.clothname }}</h5>
+        <a href="productshow/{{i.id}}" class="btn btn-outline-dark btn-sm mt-auto w-100">View Product</a>
+      </div>
+</div>
+    {% endfor %}
+  </div>
+</div>
+    
+
+    
+    
+    
+
+   
+<footer style="background-color: #0e0e0e; color: #ccc; padding: 60px 20px 30px;">
+  <div class="container">
+    <div class="row gy-4 justify-content-between text-center text-lg-start">
+
+      <div class="col-12 col-md-6 col-lg-3">
+        <h3 class="text-white fw-bold mb-3" style="letter-spacing: 1px;">FASHION</h3>
+        <p style="font-size: 0.95rem; line-height: 1.7;">
+          Explore the latest trends and timeless fashion essentials. Designed with passion, worn with confidence.
+        </p>
+      </div>
+
+      <div class="col-6 col-md-3 col-lg-2">
+        <h5 class="text-white mb-3">Company</h5>
+        <ul class="list-unstyled">
+          <li><a href="about" class="text-decoration-none text-light d-block mb-2">About Us</a></li>
+          <li><a href="help" class="text-decoration-none text-light d-block mb-2">Help & Support</a></li>
+          <li><a href="term" class="text-decoration-none text-light d-block mb-2">Terms</a></li>
+          <li><a href="privacy" class="text-decoration-none text-light d-block mb-2">Privacy Policy</a></li>
+        </ul>
+      </div>
+
+      <div class="col-6 col-md-3 col-lg-3">
+        <h5 class="text-white mb-3">Contact</h5>
+        <p class="mb-2"><i class="fa-solid fa-phone me-2 text-white"></i> 025-025-0215</p>
+        <p><i class="fa-solid fa-envelope me-2 text-white"></i> fashion@gmail.com</p>
+      </div>
+
+    
+      <div class="col-12 col-md-6 col-lg-3">
+        <h5 class="text-white mb-3">Follow Us</h5>
+        <div class="d-flex gap-3 justify-content-center justify-content-lg-start">
+          <a href="https://www.instagram.com" class="text-light fs-5"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.facebook.com" class="text-light fs-5"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://x.com/login" class="text-light fs-5"><i class="fab fa-x-twitter"></i></a>
+        </div>
+      </div>
+
+    </div>
+
+    <hr class="border-secondary my-4">
+
+    <div class="text-center" style="font-size: 0.85rem;">&copy; 2025 FASHION. All rights reserved.</div>
+  </div>
+</footer>
+
+
+
+</body>
+</html>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js" integrity="sha512-Ysw1DcK1P+uYLqprEAzNQJP+J4hTx4t/3X2nbVwszao8wD+9afLjBQYjz7Uk4ADP+Er++mJoScI42ueGtQOzEA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.css" integrity="sha512-pmAAV1X4Nh5jA9m+jcvwJXFQvCBi3T17aZ1KWkqXr7g/O2YMvO8rfaa5ETWDuBvRq6fbDjlw4jHL44jNTScaKg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<script>
+  var swiper = new Swiper(".mySwiper", {
+    slidesPerView: "auto",
+    spaceBetween: 16,
+    scrollbar: {
+      el: ".swiper-scrollbar",
+      hide: false,
+    },
+    freeMode: true, // Allows momentum-style scrolling
+  });
+  document.addEventListener('DOMContentLoaded', () => {
+    let searchinput = document.getElementById('search');
+    let searchbutton = document.getElementById('searchbutton');
+
+    searchbutton.addEventListener("click", (event) => {
+        event.preventDefault();
+        let query = encodeURIComponent(searchinput.value.trim());
+        if (query) {
+            window.location.href = `${window.location.origin}/search/${query}/`;
+        }
+    });
+});
+</script>

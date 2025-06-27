@@ -1,0 +1,220 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  
+    <title>Fashion</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href={% static 'styles.css' %}>
+    <link rel="shortcut icon" href="{% static 'src/logo-removebg-preview (2).png' %}" type="image/x-icon">
+    <script src={% static 'script.js' %}></script>
+  <style>
+
+    .ap {
+      font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+      background: #f9f9f9;
+      color: #222;
+      line-height: 1.7;
+    }
+
+    .containerst {
+      max-width: 1000px;
+      margin: 60px auto;
+      padding: 40px 30px;
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.05);
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      color: #c41e3a;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      color: #111;
+      margin-top: 40px;
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-size: 1.05rem;
+      margin-bottom: 15px;
+      color: #444;
+    }
+
+    footer {
+      background-color: #1b1b1b;
+      color: #f1f1f1;
+      text-align: center;
+      padding: 20px;
+      margin-top: 60px;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        margin: 40px 16px;
+        padding: 30px 20px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      h2 {
+        font-size: 1.3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+   <div class="navbar-container">
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">FASHION</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-between" id="navbarResponsive">
+        <div class="search-wrapper d-flex align-items-center mt-2 mt-lg-0">
+          <input class="form-control search-input" id="search" placeholder="Search for products..." />
+          <button class="btn search-btn" id="searchbutton">Search</button>
+        </div>
+
+        <ul class="navbar-nav ms-auto mt-3 mt-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="/users"><i class="fa-solid fa-user"></i> Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/like"><i class="fa-solid fa-heart"></i> Wishlist</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/carts"><i class="fa-solid fa-bag-shopping"></i> Cart</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="categories-bar px-2 " style="text-align:center">
+    <a href="/">Home</a>
+    <a href="/mencollection">Men</a>
+    <a href="/womencollection">Women</a>
+    <a href="/watchcoll">Watches</a>
+    <a href="/shoescoll">Shoes</a>
+    <a href="/accessoires">Accessories</a>
+   
+  </div>
+</div>
+    
+
+     <div class="ap">
+          <div class="containerst">
+    <h1>Terms & Conditions</h1>
+
+    <h2>1. Introduction</h2>
+    <p>Welcome to <strong>FASHION</strong>. By accessing our website or purchasing from us, you agree to be bound by these Terms and Conditions. Please read them carefully before using our services.</p>
+
+    <h2>2. Account</h2>
+    <p>You must be at least 18 years old to create an account or place an order. You are responsible for maintaining the confidentiality of your account details and for all activities under your account.</p>
+
+    <h2>3. Product & Pricing</h2>
+    <p>All prices are listed in INR and are subject to change without prior notice. We strive for accuracy, but errors may occur in product descriptions or pricing.</p>
+
+    <h2>4. Returns & Refunds</h2>
+    <p>You can return products within 7 days of delivery, provided they are unused, unwashed, and in original packaging. Refunds are processed within 5–7 business days after inspection.</p>
+
+    <h2>5. Shipping</h2>
+    <p>We ship across India. Orders are usually delivered within 3–5 business days. Delays may occur during high-demand periods or due to external factors.</p>
+
+    <h2>6. Limitation of Liability</h2>
+    <p>FASHION is not liable for any indirect, incidental, or consequential damages arising from the use of our products or services. Your use of this site is at your own risk.</p>
+
+    <h2>7. Changes to Terms</h2>
+    <p>We reserve the right to update or modify these Terms at any time. Changes will be effective upon posting on this page. Please check this page regularly for updates.</p>
+
+    <h2>8. Contact</h2>
+    <p>If you have any questions regarding these Terms, feel free to contact us at <strong>support@fashion.com</strong>.</p>
+  </div>
+     </div>
+
+  <footer>
+    &copy; 2025 FASHION. All rights reserved.
+  </footer>
+
+
+<footer style="background-color: #0e0e0e; color: #ccc; padding: 60px 20px 30px;">
+  <div class="container">
+    <div class="row gy-4 justify-content-between text-center text-lg-start">
+
+      <div class="col-12 col-md-6 col-lg-3">
+        <h3 class="text-white fw-bold mb-3" style="letter-spacing: 1px;">FASHION</h3>
+        <p style="font-size: 0.95rem; line-height: 1.7;">
+          Explore the latest trends and timeless fashion essentials. Designed with passion, worn with confidence.
+        </p>
+      </div>
+
+      <div class="col-6 col-md-3 col-lg-2">
+        <h5 class="text-white mb-3">Company</h5>
+        <ul class="list-unstyled">
+          <li><a href="about" class="text-decoration-none text-light d-block mb-2">About Us</a></li>
+          <li><a href="help" class="text-decoration-none text-light d-block mb-2">Help & Support</a></li>
+          <li><a href="term" class="text-decoration-none text-light d-block mb-2">Terms</a></li>
+          <li><a href="privacy" class="text-decoration-none text-light d-block mb-2">Privacy Policy</a></li>
+        </ul>
+      </div>
+
+      <div class="col-6 col-md-3 col-lg-3">
+        <h5 class="text-white mb-3">Contact</h5>
+        <p class="mb-2"><i class="fa-solid fa-phone me-2 text-white"></i> 025-025-0215</p>
+        <p><i class="fa-solid fa-envelope me-2 text-white"></i> fashion@gmail.com</p>
+      </div>
+
+    
+      <div class="col-12 col-md-6 col-lg-3">
+        <h5 class="text-white mb-3">Follow Us</h5>
+        <div class="d-flex gap-3 justify-content-center justify-content-lg-start">
+          <a href="https://www.instagram.com" class="text-light fs-5"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.facebook.com" class="text-light fs-5"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://x.com/login" class="text-light fs-5"><i class="fab fa-x-twitter"></i></a>
+        </div>
+      </div>
+
+    </div>
+
+    <hr class="border-secondary my-4">
+
+    <div class="text-center" style="font-size: 0.85rem;">&copy; 2025 FASHION. All rights reserved.</div>
+  </div>
+</footer>
+
+
+</body>
+</html>
+
+
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    let searchinput = document.getElementById('search');
+    let searchbutton = document.getElementById('searchbutton');
+
+    searchbutton.addEventListener("click", (event) => {
+        event.preventDefault();
+        let query = encodeURIComponent(searchinput.value.trim());
+        if (query) {
+            window.location.href = `${window.location.origin}/search/${query}/`;
+        }
+    });
+});
+</script>

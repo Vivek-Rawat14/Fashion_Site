@@ -1,0 +1,154 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashion</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href={% static 'styles.css' %}>
+    <link rel="shortcut icon" href="{% static 'src/logo-removebg-preview (2).png' %}" type="image/x-icon">
+    <script src={% static 'script.js' %}></script>
+</head>
+<body>
+
+   <div class="navbar-container">
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">FASHION</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-between" id="navbarResponsive">
+        <div class="search-wrapper d-flex align-items-center mt-2 mt-lg-0">
+          <input class="form-control search-input" id="search" placeholder="Search for products..." />
+          <button class="btn search-btn" id="searchbutton">Search</button>
+        </div>
+
+        <ul class="navbar-nav ms-auto mt-3 mt-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="/users"><i class="fa-solid fa-user"></i> Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/like"><i class="fa-solid fa-heart"></i> Wishlist</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/carts"><i class="fa-solid fa-bag-shopping"></i> Cart</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="categories-bar px-2 " style="text-align:center">
+    <a href="/">Home</a>
+    <a href="/mencollection">Men</a>
+    <a href="/womencollection">Women</a>
+    <a href="/watchcoll">Watches</a>
+    <a href="/shoescoll">Shoes</a>
+    <a href="/accessoires">Accessories</a>
+   
+  </div>
+</div>
+    
+
+  
+
+      <div class="container py-5">
+        <div class="store-header">Women-Watchs</div>
+        <div class="row g-4">
+          {% for i in data %}
+          <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="product-card shadow-sm">
+              <div class="image-wrapper">
+                <img src="{% static 'clothimg/' %}{{ i.clothimg }}" alt="Product" class="product-image">
+              </div>
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <span class="product-price">Rs {{ i.clothprice }}</span>
+              
+                </div>
+                <p class="product-title">
+                  {{ i.clothname }}
+                </p>
+                <a href="productshow/{{i.id}}" class="btn btn-outline-dark btn-sm mt-2 w-100">View Product</a>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      
+      
+
+<footer style="background-color: #0e0e0e; color: #ccc; padding: 60px 20px 30px;">
+  <div class="container">
+    <div class="row gy-4 justify-content-between text-center text-lg-start">
+
+      <div class="col-12 col-md-6 col-lg-3">
+        <h3 class="text-white fw-bold mb-3" style="letter-spacing: 1px;">FASHION</h3>
+        <p style="font-size: 0.95rem; line-height: 1.7;">
+          Explore the latest trends and timeless fashion essentials. Designed with passion, worn with confidence.
+        </p>
+      </div>
+
+      <div class="col-6 col-md-3 col-lg-2">
+        <h5 class="text-white mb-3">Company</h5>
+        <ul class="list-unstyled">
+          <li><a href="about" class="text-decoration-none text-light d-block mb-2">About Us</a></li>
+          <li><a href="help" class="text-decoration-none text-light d-block mb-2">Help & Support</a></li>
+          <li><a href="term" class="text-decoration-none text-light d-block mb-2">Terms</a></li>
+          <li><a href="privacy" class="text-decoration-none text-light d-block mb-2">Privacy Policy</a></li>
+        </ul>
+      </div>
+
+      <div class="col-6 col-md-3 col-lg-3">
+        <h5 class="text-white mb-3">Contact</h5>
+        <p class="mb-2"><i class="fa-solid fa-phone me-2 text-white"></i> 025-025-0215</p>
+        <p><i class="fa-solid fa-envelope me-2 text-white"></i> fashion@gmail.com</p>
+      </div>
+
+    
+      <div class="col-12 col-md-6 col-lg-3">
+        <h5 class="text-white mb-3">Follow Us</h5>
+        <div class="d-flex gap-3 justify-content-center justify-content-lg-start">
+          <a href="https://www.instagram.com" class="text-light fs-5"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.facebook.com" class="text-light fs-5"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://x.com/login" class="text-light fs-5"><i class="fab fa-x-twitter"></i></a>
+        </div>
+      </div>
+
+    </div>
+
+    <hr class="border-secondary my-4">
+
+    <div class="text-center" style="font-size: 0.85rem;">&copy; 2025 FASHION. All rights reserved.</div>
+  </div>
+</footer>
+
+  
+
+
+</body>
+</html>
+
+
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    let searchinput = document.getElementById('search');
+    let searchbutton = document.getElementById('searchbutton');
+
+    searchbutton.addEventListener("click", (event) => {
+        event.preventDefault();
+        let query = encodeURIComponent(searchinput.value.trim());
+        if (query) {
+            window.location.href = `${window.location.origin}/search/${query}/`;
+        }
+    });
+});
+</script>
